@@ -1,0 +1,51 @@
+#! /home/ataraxia/Utils/oss-cad-suite/bin/vvp
+:ivl_version "13.0 (devel)" "(s20221226-540-gcbdaa865a)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision + 0;
+:vpi_module "/home/ataraxia/Utils/oss-cad-suite/lib/ivl/system.vpi";
+:vpi_module "/home/ataraxia/Utils/oss-cad-suite/lib/ivl/vhdl_sys.vpi";
+:vpi_module "/home/ataraxia/Utils/oss-cad-suite/lib/ivl/vhdl_textio.vpi";
+:vpi_module "/home/ataraxia/Utils/oss-cad-suite/lib/ivl/v2005_math.vpi";
+:vpi_module "/home/ataraxia/Utils/oss-cad-suite/lib/ivl/va_math.vpi";
+S_0x5555566191a0 .scope module, "tb_tri_buff" "tb_tri_buff" 2 2;
+ .timescale 0 0;
+v0x555556629320_0 .var "a", 0 0;
+v0x5555566293c0_0 .net "b", 0 0, L_0x555556629530;  1 drivers
+v0x555556629460_0 .var "en", 0 0;
+S_0x555556619330 .scope module, "gate1" "tri_buff" 2 7, 3 1 0, S_0x5555566191a0;
+ .timescale 0 0;
+    .port_info 0 /INPUT 1 "a";
+    .port_info 1 /OUTPUT 1 "b";
+    .port_info 2 /INPUT 1 "en";
+o0x733832496018 .functor BUFZ 1, c4<z>; HiZ drive
+; Elide local net with no drivers, v0x5555565e0cc0_0 name=_ivl_0
+v0x555556629080_0 .net "a", 0 0, v0x555556629320_0;  1 drivers
+v0x555556629140_0 .net "b", 0 0, L_0x555556629530;  alias, 1 drivers
+v0x5555566291e0_0 .net "en", 0 0, v0x555556629460_0;  1 drivers
+L_0x555556629530 .functor MUXZ 1, o0x733832496018, v0x555556629320_0, v0x555556629460_0, C4<>;
+    .scope S_0x5555566191a0;
+T_0 ;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x555556629320_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x555556629460_0, 0, 1;
+    %vpi_call 2 16 "$monitor", " a = %b | en = %b | b = %b", v0x555556629320_0, v0x555556629460_0, v0x5555566293c0_0 {0 0 0};
+    %delay 10, 0;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x555556629460_0, 0, 1;
+    %delay 10, 0;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x555556629320_0, 0, 1;
+    %delay 10, 0;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x555556629460_0, 0, 1;
+    %delay 10, 0;
+    %vpi_call 2 29 "$finish" {0 0 0};
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "tb_tri_buff.v";
+    "tri_buff.v";
