@@ -1,0 +1,67 @@
+#! /home/ataraxia/Utils/oss-cad-suite/bin/vvp
+:ivl_version "13.0 (devel)" "(s20221226-540-gcbdaa865a)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision + 0;
+:vpi_module "/home/ataraxia/Utils/oss-cad-suite/lib/ivl/system.vpi";
+:vpi_module "/home/ataraxia/Utils/oss-cad-suite/lib/ivl/vhdl_sys.vpi";
+:vpi_module "/home/ataraxia/Utils/oss-cad-suite/lib/ivl/vhdl_textio.vpi";
+:vpi_module "/home/ataraxia/Utils/oss-cad-suite/lib/ivl/v2005_math.vpi";
+:vpi_module "/home/ataraxia/Utils/oss-cad-suite/lib/ivl/va_math.vpi";
+S_0x555556d6fde0 .scope module, "tb_comp" "tb_comp" 2 1;
+ .timescale 0 0;
+v0x555556dbd770_0 .var "a", 0 0;
+v0x555556dbd830_0 .var "b", 0 0;
+v0x555556dbd8d0_0 .net "equal", 0 0, L_0x555556dbdec0;  1 drivers
+v0x555556dbd970_0 .net "greater", 0 0, L_0x555556d97250;  1 drivers
+v0x555556dbda40_0 .net "lesser", 0 0, L_0x555556dbdd10;  1 drivers
+S_0x555556d6ff70 .scope module, "c1" "comp" 2 9, 3 1 0, S_0x555556d6fde0;
+ .timescale 0 0;
+    .port_info 0 /INPUT 1 "a";
+    .port_info 1 /INPUT 1 "b";
+    .port_info 2 /OUTPUT 1 "greater";
+    .port_info 3 /OUTPUT 1 "lesser";
+    .port_info 4 /OUTPUT 1 "equal";
+L_0x555556d971e0 .functor NOT 1, v0x555556dbd830_0, C4<0>, C4<0>, C4<0>;
+L_0x555556d97250 .functor AND 1, v0x555556dbd770_0, L_0x555556d971e0, C4<1>, C4<1>;
+L_0x555556dbdca0 .functor NOT 1, v0x555556dbd770_0, C4<0>, C4<0>, C4<0>;
+L_0x555556dbdd10 .functor AND 1, L_0x555556dbdca0, v0x555556dbd830_0, C4<1>, C4<1>;
+L_0x555556dbde50 .functor XOR 1, v0x555556dbd770_0, v0x555556dbd830_0, C4<0>, C4<0>;
+L_0x555556dbdec0 .functor NOT 1, L_0x555556dbde50, C4<0>, C4<0>, C4<0>;
+v0x555556daace0_0 .net *"_ivl_0", 0 0, L_0x555556d971e0;  1 drivers
+v0x555556dbd120_0 .net *"_ivl_4", 0 0, L_0x555556dbdca0;  1 drivers
+v0x555556dbd200_0 .net *"_ivl_8", 0 0, L_0x555556dbde50;  1 drivers
+v0x555556dbd2c0_0 .net "a", 0 0, v0x555556dbd770_0;  1 drivers
+v0x555556dbd380_0 .net "b", 0 0, v0x555556dbd830_0;  1 drivers
+v0x555556dbd490_0 .net "equal", 0 0, L_0x555556dbdec0;  alias, 1 drivers
+v0x555556dbd550_0 .net "greater", 0 0, L_0x555556d97250;  alias, 1 drivers
+v0x555556dbd610_0 .net "lesser", 0 0, L_0x555556dbdd10;  alias, 1 drivers
+    .scope S_0x555556d6fde0;
+T_0 ;
+    %vpi_call 2 13 "$monitor", " a = %b  | b = %b  |  greater = %b  |  lesser = %b  |  equal = %b", v0x555556dbd770_0, v0x555556dbd830_0, v0x555556dbd970_0, v0x555556dbda40_0, v0x555556dbd8d0_0 {0 0 0};
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x555556dbd770_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x555556dbd830_0, 0, 1;
+    %delay 10, 0;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x555556dbd770_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x555556dbd830_0, 0, 1;
+    %delay 10, 0;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x555556dbd770_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x555556dbd830_0, 0, 1;
+    %delay 10, 0;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x555556dbd770_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x555556dbd830_0, 0, 1;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "tb_comp.v";
+    "comp.v";
